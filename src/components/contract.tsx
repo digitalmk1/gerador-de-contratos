@@ -130,13 +130,6 @@ const Contract = ({ data }: ContractProps) => {
       <Clause title="CLÁUSULA DÉCIMA – DO FORO">
         <p>10.1 As partes elegem o Foro da Comarca de Tubarão - SC, para dirimirem quaisquer dúvidas concernentes ao presente instrumento.</p>
       </Clause>
-
-      <div className="text-center mt-12 space-y-2">
-        <p className="font-semibold">MARCIO SILVA DE OLIVEIRA – ME</p>
-        <p className="font-semibold">DIGITAL MK – SISTEMAS</p>
-        <p className="font-semibold">CNPJ 14.473.125/0001-43</p>
-      </div>
-
     </div>
   );
 };
