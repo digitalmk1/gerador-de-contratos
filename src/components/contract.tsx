@@ -127,7 +127,7 @@ const Contract = ({ data }: ContractProps) => {
         <p>9.1 O presente instrumento contratual é celebrado em caráter irrevogável e irretratável, valendo entre as Partes, herdeiros ou sucessores a qualquer título, sendo vedado ao(à) CONTRATANTE transferir os direitos e obrigações impostos por este instrumento, sem a prévia e expressa anuência, por escrito, da CONTRATADA.</p>
       </Clause>
       
-      <Clause title="CLÁUSULA DÉCIMA – FORO">
+      <Clause title="CLÁUSULA DÉCIMA – DO FORO">
         <p>10.1 As partes elegem o Foro da Comarca de Tubarão - SC, para dirimirem quaisquer dúvidas concernentes ao presente instrumento.</p>
       </Clause>
 
