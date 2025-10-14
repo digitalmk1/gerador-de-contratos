@@ -35,20 +35,20 @@ const Contract = ({ data }: ContractProps) => {
 
       <Clause title="CLÁUSULA PRIMEIRA – DEFINIÇÕES">
         <p>1.1. Para os efeitos deste instrumento os vocábulos e expressões abaixo têm as seguintes definições:</p>
-        <ol className="list-decimal list-outside ms-4 space-y-2">
-            <li><strong>Multiusuário:</strong> termo que define um sistema operacional que permite acesso simultâneo de múltiplos usuários;</li>
-            <li><strong>HIPER:</strong> Sistema Integrado de Gestão Empresarial (“Enterprise Resource Planning”), software multiusuário de planejamento de recursos empresariais online e ou Desktop, que possui módulos de gerenciamento de processos relacionados a finanças (gestão financeira, gestão de compras e relatórios), controle de vendas e serviços (gestão de vendas, gestão fiscal (PDV com cupom NFCe e CFe SAT), de propriedade da empresa ( HIPER SOFTWARE CNPJ 12.605.982/0001-24) detentora dos direitos autorais do código fonte do sistema , não desenvolvidos por encomenda do(a) CONTRATADA , representando sistema genérico de uso não exclusivo;</li>
-            <li><strong>HIPER:</strong> software destinado à comercialização, na forma de revenda, de Sistemas.</li>
-            <li><strong>Backup:</strong> cópia de dados de um dispositivo de armazenamento a outra base de dados para que possam ser restaurados em caso da perda dos dados originais;</li>
-            <li><strong>Suporte:</strong> serviço de atendimento para esclarecimento de dúvidas e auxílio atinentes ao funcionamento e à utilização de software;</li>
-            <li><strong>Licença de uso:</strong> autorização concedida para uso do software, por prazo determinado conforme proposta comercial apresentada ao CONTRATANTE contendo os módulos a serem utilizados conforme necessidade da CONTRATANTE;</li>
-            <li><strong>Versão:</strong> o conjunto de características estruturais e funcionais do software em determinado estágio;</li>
-            <li><strong>Customização:</strong> personalização ou adaptação de funcionalidades de software, a fim de alterar ou ampliar suas funcionalidades (módulos/rotinas) originárias.</li>
-            <li><strong>Proposta comercial:</strong> documento enviado ao USUÁRIO com preços, condições de pagamento, detalhamento do produto contratado e implantação que faz parte do presente contrato. Em caso de contradição entre a proposta comercial e o presente termo, prevalecem as disposições da proposta comercial.</li>
-            <li><strong>Uptime:</strong> Tempo em que a aplicação se encontra operando normalmente, sem nenhum problema ou queda no servidor.</li>
-            <li><strong>CONTRATADA –</strong> É a Empresa responsável pela venda e manutenção do software</li>
-            <li><strong>CONTRATANTE –</strong> É a Empresa que está contratando serviços</li>
-        </ol>
+        <div className="space-y-2">
+            <p><strong>1.1.1. Multiusuário:</strong> termo que define um sistema operacional que permite acesso simultâneo de múltiplos usuários;</p>
+            <p><strong>1.1.2. HIPER:</strong> Sistema Integrado de Gestão Empresarial (“Enterprise Resource Planning”), software multiusuário de planejamento de recursos empresariais online e ou Desktop, que possui módulos de gerenciamento de processos relacionados a finanças (gestão financeira, gestão de compras e relatórios), controle de vendas e serviços (gestão de vendas, gestão fiscal (PDV com cupom NFCe e CFe SAT), de propriedade da empresa ( HIPER SOFTWARE CNPJ 12.605.982/0001-24) detentora dos direitos autorais do código fonte do sistema , não desenvolvidos por encomenda do(a) CONTRATADA , representando sistema genérico de uso não exclusivo;</p>
+            <p><strong>1.1.3. HIPER:</strong> software destinado à comercialização, na forma de revenda, de Sistemas.</p>
+            <p><strong>1.1.4. Backup:</strong> cópia de dados de um dispositivo de armazenamento a outra base de dados para que possam ser restaurados em caso da perda dos dados originais;</p>
+            <p><strong>1.1.5. Suporte:</strong> serviço de atendimento para esclarecimento de dúvidas e auxílio atinentes ao funcionamento e à utilização de software;</p>
+            <p><strong>1.1.6. Licença de uso:</strong> autorização concedida para uso do software, por prazo determinado conforme proposta comercial apresentada ao CONTRATANTE contendo os módulos a serem utilizados conforme necessidade da CONTRATANTE;</p>
+            <p><strong>1.1.7. Versão:</strong> o conjunto de características estruturais e funcionais do software em determinado estágio;</p>
+            <p><strong>1.1.8. Customização:</strong> personalização ou adaptação de funcionalidades de software, a fim de alterar ou ampliar suas funcionalidades (módulos/rotinas) originárias.</p>
+            <p><strong>1.1.9 Proposta comercial:</strong> documento enviado ao USUÁRIO com preços, condições de pagamento, detalhamento do produto contratado e implantação que faz parte do presente contrato. Em caso de contradição entre a proposta comercial e o presente termo, prevalecem as disposições da proposta comercial.</p>
+            <p><strong>1.1.10. Uptime:</strong> Tempo em que a aplicação se encontra operando normalmente, sem nenhum problema ou queda no servidor.</p>
+            <p><strong>1.1.11 CONTRATADA –</strong> É a Empresa responsável pela venda e manutenção do software</p>
+            <p><strong>1.1.12 CONTRATANTE –</strong> É a Empresa que está contratando serviços</p>
+        </div>
       </Clause>
       
       <Clause title="CLÁUSULA SEGUNDA – DO OBJETO">
@@ -75,13 +75,7 @@ const Contract = ({ data }: ContractProps) => {
         <p>3.8. O (A) CONTRATANTE está ciente de que é indispensável que o terminal onde o sistema será utilizado tenha acesso à internet e navegador moderno (tais como: Google Chrome, Mozilla Firefox, Safari), devidamente atualizado, para o preciso funcionamento HIPER GESTÃO.</p>
         <p>3.9. É proibido qualquer procedimento realizado pelo (a) CONTRATANTE que implique no aluguel, arrendamento, cessão, empréstimo, seja total ou parcial, do HIPER ERP a terceiros.</p>
         <p>3.10. A CONTRATADA não se responsabilizará pelos resultados produzidos pelo HIPER ERP, caso estes sejam afetados por algum tipo de programa externo, como aqueles conhecidos popularmente como vírus, ou por falha de operação.</p>
-        <p>3.11. A CONTRATADA não se responsabilizará, ainda, por:</p>
-        <ul className="list-disc list-outside ms-4">
-            <li>(i) Integração do HIPER ERP com qualquer outro software de terceiros ou do (a) CONTRATANTE;</li>
-            <li>(ii) operação do HIPER ERP por pessoas não autorizadas;</li>
-            <li>(iii) qualquer defeito decorrente de culpa exclusiva do(a) CONTRATANTE ; e</li>
-            <li>(iv) pelos danos ou prejuízos decorrentes de decisões administrativas, gerenciais ou comerciais tomadas com base nas informações fornecidas pelo HIPER ERP.</li>
-        </ul>
+        <p>3.11. A CONTRATADA não se responsabilizará, ainda, por: (i) Integração do HIPER ERP com qualquer outro software de terceiros ou do (a) CONTRATANTE; (ii) operação do HIPER ERP por pessoas não autorizadas; (iii) qualquer defeito decorrente de culpa exclusiva do(a) CONTRATANTE ; e (iv) pelos danos ou prejuízos decorrentes de decisões administrativas, gerenciais ou comerciais tomadas com base nas informações fornecidas pelo HIPER ERP.</p>
         <p>3.12. Respeitadas as previsões legais relativas a esta espécie de contrato, a CONTRATADA não será responsabilizada pelo uso abusivo, ou uso em desacordo com as especificações técnicas aplicáveis, ou em razão de modificações ou ajustes sistêmicos realizados (inclusive combinação, conexão, operação ou uso de qualquer componente com equipamento ou documentação não fornecido pela CONTRATADA), do HIPER ERP pelo(a) CONTRATANTE ou por qualquer terceiro não autorizado pela CONTRATADA, inclusive por lucros cessantes, perda de dados, descontinuidade de negócios, relacionados ao uso ou mau uso do HIPER ERP, mesmo nos casos em que a CONTRATADA tenha sido comunicada.</p>
         <p>3.13. A CONTRATADA não será responsabilizada por quaisquer atrasos ou falha no cumprimento de suas obrigações, caso sejam resultantes de fatos alheios à vontade das partes, ou ainda em razão de fatores que fujam de seu controle sistêmico, incluindo casos fortuitos e/ou eventos de força maior.</p>
         <p>3.14. Qualquer prejuízo que o(a) CONTRATANTE vierem a experimentar, pelo uso inadequado do HIPER ERP, pelo cadastramento incorreto de quaisquer dados nas plataformas da CONTRATADA ou pelas informações constantes em boletos bancários/notas fiscais que foram fornecidas pelo(a) CONTRATANTE; não serão suportados pela CONTRATADA.</p>
@@ -126,7 +120,7 @@ const Contract = ({ data }: ContractProps) => {
         <p>8.2 Rescindido o presente instrumento antes do lapso temporal de vigência do licenciamento contratado, por opção ou culpa da CONTRATANTE antes dos 6 meses , esta perderá em desfavor da CONTRATADA o valor que já pago, além de ter de pagar em favor da CONTRATADA as parcelas que compõe o preço devidas até a data da rescisão contratual e, a título de multa, a quantia correspondente a 30% (trinta por cento) sobre o valor das parcelas vincendas que compõem o preço total do contrato dentro do período de 6 meses.</p>
         <p>8.3 Passados 6 (seis meses) a CONTRATANTE poderá a qualquer tempo solicitar o cancelamento do contrato sem que lhe seja aplicada multas.</p>
         <p>8.4. A CONTRATADA não estará obrigada a armazenar informações do (a) CONTRATANTE em suas bases de dados por mais de 45 dias a partir da expiração das competentes licenças ou da inatividade de pagamentos, salvo a guarda por 06(seis) meses dos Registros de Acesso, nos termos do artigo 15 da Lei 12.965/2014. 3.17. A CONTRATADA não se responsabilizará pelo armazenamento quaisquer dados do (a) CONTRATANTE depois de perfectibilizada a rescisão contratual.</p>
-        <p>8.3 Caso a CONTRATADA, por qualquer motivo, deixe de atuar no mercado, especialmente deixando de prestar os serviços relativos a venda de Software será indicada novos representantes para que o Suporte seja continuamente prestado, assegurando ao (à) CONTRATANTE a continuidade do adequado funcionamento/manutenção daquele, consideradas as suas especificações, durante o prazo de validade técnica da respectiva versão CONTRATADA, nos moldes do artigo 8º da Lei 9.609/98.</p>
+        <p>8.5 Caso a CONTRATADA, por qualquer motivo, deixe de atuar no mercado, especialmente deixando de prestar os serviços relativos a venda de Software será indicada novos representantes para que o Suporte seja continuamente prestado, assegurando ao (à) CONTRATANTE a continuidade do adequado funcionamento/manutenção daquele, consideradas as suas especificações, durante o prazo de validade técnica da respectiva versão CONTRATADA, nos moldes do artigo 8º da Lei 9.609/98.</p>
       </Clause>
 
       <Clause title="CLÁUSULA NONA – DISPOSIÇÕES GERAIS">
