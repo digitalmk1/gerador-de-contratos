@@ -26,7 +26,7 @@ const Contract = ({ data }: ContractProps) => {
   const filledValueClass = "text-primary font-semibold";
 
   return (
-    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12">
+    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12 text-sm">
       <h1 className="text-center !font-bold !text-2xl !mb-10">CONTRATO DE LICENÇA DE USO DE SOFTWARE (ERP)</h1>
       
       <p>
@@ -135,3 +135,5 @@ const Contract = ({ data }: ContractProps) => {
 };
 
 export default Contract;
+
+    
