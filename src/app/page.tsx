@@ -82,7 +82,8 @@ export default function Home() {
           type: 'application/msword'
         });
         
-        const fileName = 'digital MK.doc';
+        const razaoSocial = form.getValues('razaoSocial');
+        const fileName = razaoSocial ? `${razaoSocial}.doc` : 'digital MK.doc';
         saveAs(blob, fileName);
 
       } catch (error) {
