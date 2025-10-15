@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -12,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Contract from '@/components/contract';
+import { formatCEP, formatCnpjCpf } from '@/lib/masks';
 
 const formSchema = z.object({
   razaoSocial: z.string().min(1, { message: "Razão Social é obrigatória." }),
@@ -19,7 +21,7 @@ const formSchema = z.object({
   endereco: z.string().min(1, { message: "Endereço é obrigatório." }),
   cidade: z.string().min(1, { message: "Cidade é obrigatória." }),
   uf: z.string().min(2, { message: "UF deve ter 2 caracteres." }).max(2, { message: "UF deve ter 2 caracteres." }),
-  cep: z.string().min(8, { message: "CEP deve ter 8 caracteres." }),
+  cep: z.string().min(9, { message: "CEP deve ter 8 caracteres." }),
 });
 
 export type ContractFormData = z.infer<typeof formSchema>;
@@ -43,8 +45,8 @@ export default function Home() {
   const watchedData = form.watch();
 
   const generateDocx = async () => {
+    form.trigger();
     if (!form.formState.isValid) {
-      form.trigger();
       return;
     }
 
@@ -56,7 +58,7 @@ export default function Home() {
         const styles = `
           @page WordSection1 {
             size: 595.3pt 841.9pt; /* A4 */
-            margin: 3cm 2cm 2cm 3cm; /* ABNT: Superior 3cm, Direita 2cm, Inferior 2cm, Esquerda 3cm */
+            margin: 3cm 3cm 2cm 2cm; /* ABNT: Superior 3cm, Esquerda 3cm, Inferior 2cm, Direita 2cm */
             mso-header-margin: .5in;
             mso-footer-margin: .5in;
             mso-paper-source: 0;
@@ -134,7 +136,13 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>CNPJ / CPF</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ex: 12.345.678/0001-90" {...field} />
+                        <Input 
+                          placeholder="Ex: 12.345.678/0001-90" 
+                          {...field}
+                          onChange={(e) => {
+                            field.onChange(formatCnpjCpf(e.target.value));
+                          }}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -189,7 +197,13 @@ export default function Home() {
                       <FormItem>
                         <FormLabel>CEP</FormLabel>
                         <FormControl>
-                          <Input placeholder="Ex: 01001-000" {...field} />
+                          <Input 
+                            placeholder="Ex: 01001-000" 
+                            {...field}
+                            onChange={(e) => {
+                              field.onChange(formatCEP(e.target.value));
+                            }}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -217,7 +231,7 @@ export default function Home() {
             )}
             {isGenerating ? 'Gerando Documento...' : 'Gerar e Baixar DOCX'}
           </Button>
-          {!form.formState.isValid && form.formState.isSubmitted && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o documento.</p>}
+          {form.formState.isSubmitted && !form.formState.isValid && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o documento.</p>}
         </footer>
       </div>
     </main>
