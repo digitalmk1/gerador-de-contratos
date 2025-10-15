@@ -104,7 +104,7 @@ export default function Home() {
     <main className="min-h-screen bg-background p-4 sm:p-6 md:p-8">
       <div className="max-w-5xl mx-auto space-y-8">
         <header className="text-center py-8">
-          <h1 className="text-4xl font-headline font-bold text-primary sm:text-5xl">ContractEase</h1>
+          <h1 className="text-4xl font-headline font-bold text-primary sm:text-5xl">CONTRATO DIGITAL MK</h1>
           <p className="text-muted-foreground mt-2 text-lg">Gere seu contrato de licença de uso de software com facilidade.</p>
         </header>
 

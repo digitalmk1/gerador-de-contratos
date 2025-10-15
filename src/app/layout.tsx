@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ContractEase',
+  title: 'CONTRATO DIGITAL MK',
   description: 'Gere seu contrato de licença de uso de software com facilidade.',
 };
 
