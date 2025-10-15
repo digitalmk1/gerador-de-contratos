@@ -66,6 +66,7 @@ export default function Home() {
           }
           body {
             font-family: Arial, sans-serif;
+            font-size: 12pt;
             line-height: 1.5;
           }
           p, h1, h2 {
