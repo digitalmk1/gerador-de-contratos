@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { FileText, Loader2 } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { FileText, Loader2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -48,41 +48,56 @@ export default function Home() {
       form.trigger();
       return;
     }
-    
+
     setIsGenerating(true);
-    const input = document.getElementById('contract-preview');
-    if (input) {
+    const contractElement = document.getElementById('contract-preview');
+
+    if (contractElement) {
       try {
-        const canvas = await html2canvas(input, {
+        const canvas = await html2canvas(contractElement, {
           scale: 2,
           useCORS: true,
-          backgroundColor: '#ffffff',
+          logging: false,
         });
+        
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgProps = pdf.getImageProperties(imgData);
-        const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        let heightLeft = imgHeight;
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = imgWidth / imgHeight;
+        const newImgWidth = pdfWidth;
+        const newImgHeight = newImgWidth / ratio;
+        let heightLeft = newImgHeight;
         let position = 0;
 
-        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+        pdf.addImage(imgData, 'PNG', 0, position, newImgWidth, newImgHeight);
         heightLeft -= pdfHeight;
 
+        let page = 1;
         while (heightLeft > 0) {
-          position = position - pdfHeight;
+          page++;
+          position = heightLeft - newImgHeight;
           pdf.addPage();
-          pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+          pdf.addImage(imgData, 'PNG', 0, position, newImgWidth, newImgHeight);
           heightLeft -= pdfHeight;
         }
-        pdf.save('contrato-digitalmk.pdf');
+
+        const a = document.createElement('a');
+        a.href = pdf.output('bloburl');
+        a.download = 'contrato-digitalmk.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
       } catch (error) {
         console.error("Failed to generate PDF:", error);
       } finally {
         setIsGenerating(false);
       }
     } else {
+      console.error("Contract preview element not found");
       setIsGenerating(false);
     }
   };
