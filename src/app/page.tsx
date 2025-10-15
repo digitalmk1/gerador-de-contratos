@@ -53,8 +53,39 @@ export default function Home() {
 
     if (contractElement) {
       try {
-        const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Contrato</title></head><body>";
-        const footer = "</body></html>";
+        const styles = `
+          @page WordSection1 {
+            size: 595.3pt 841.9pt; /* A4 */
+            margin: 3cm 2cm 3cm 2cm;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+          }
+          div.WordSection1 {
+            page: WordSection1;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+          }
+          p, h1, h2 {
+            text-align: justify;
+          }
+          h1, h2 {
+             font-weight: bold;
+          }
+        `;
+
+        const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+          <head>
+            <meta charset='utf-8'>
+            <title>Contrato</title>
+            <style>${styles}</style>
+          </head>
+          <body>
+            <div class="WordSection1">
+        `;
+        const footer = "</div></body></html>";
         const sourceHTML = header + contractElement.innerHTML + footer;
         
         const blob = new Blob(['\ufeff', sourceHTML], {

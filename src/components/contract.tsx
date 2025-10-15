@@ -8,7 +8,7 @@ type ContractProps = {
 
 const Clause = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="mt-6 text-justify">
-    <h2 className="font-bold text-lg mb-2">{title}</h2>
+    <h2 className="font-bold text-lg mb-2 uppercase">{title}</h2>
     {children}
   </section>
 );
@@ -26,8 +26,8 @@ const Contract = ({ data }: ContractProps) => {
   const filledValueClass = "text-primary font-semibold";
 
   return (
-    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12 text-[15px]">
-      <h1 className="text-center !font-bold !text-2xl !mb-10">CONTRATO DE LICENÇA DE USO DE SOFTWARE (ERP)</h1>
+    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12" style={{fontFamily: 'Arial, sans-serif', fontSize: '12pt', lineHeight: '1.5'}}>
+      <h1 className="text-center !font-bold !text-2xl !mb-10 uppercase">Contrato de Licença de Uso de Software (ERP)</h1>
       
       <p className="text-justify">
         <strong>Razão Social:</strong> <span className={filledValueClass}>{razaoSocial}</span> - pessoa física ou jurídica de direito privado, regularmente inscrita no CNPJ/CPF sob o número: <span className={filledValueClass}>{cnpjCpf}</span> com endereço: <span className={filledValueClass}>{endereco}</span> Cidade: <span className={filledValueClass}>{cidade}</span> Estado: <span className={filledValueClass}>{uf}</span>, CEP: <span className={filledValueClass}>{cep}</span>, doravante denominado(a) CONTRATANTE; e MARCIO SILVA DE OLIVEIRA ME, pessoa jurídica de direito privado com sede na Rua Pedro Gomes de Carvalho, Nº 758, Oficinas, Tubarão /SC, inscrita no CNPJ sob o n.º 14473125/0001-43, doravante denominada CONTRATADA. Em conjunto, CONTRATANTE e CONTRATADA denominadas “Partes” e, isoladamente, “Parte”, conferem forma regular e estável ao presente CONTRATO EMPRESARIAL (USO SISTEMA HIPER) (“Contrato”), mediante as seguintes cláusulas e condições.
