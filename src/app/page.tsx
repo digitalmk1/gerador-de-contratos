@@ -55,33 +55,46 @@ export default function Home() {
     if (contractElement) {
       try {
         const canvas = await html2canvas(contractElement, {
-          scale: 2,
+          scale: 2, // Higher scale for better quality
           useCORS: true,
           logging: false,
         });
         
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
+        
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        
+        // ABNT margins in mm
+        const topMargin = 30;
+        const bottomMargin = 20;
+        const leftMargin = 30;
+        const rightMargin = 20;
+
+        const contentWidth = pageWidth - leftMargin - rightMargin;
+        const contentHeight = pageHeight - topMargin - bottomMargin;
+
         const imgWidth = canvas.width;
         const imgHeight = canvas.height;
         const ratio = imgWidth / imgHeight;
-        const newImgWidth = pdfWidth;
+        
+        const newImgWidth = contentWidth;
         const newImgHeight = newImgWidth / ratio;
+        
         let heightLeft = newImgHeight;
         let position = 0;
 
-        pdf.addImage(imgData, 'PNG', 0, position, newImgWidth, newImgHeight);
-        heightLeft -= pdfHeight;
+        // Add first page
+        pdf.addImage(imgData, 'PNG', leftMargin, topMargin, newImgWidth, newImgHeight);
+        heightLeft -= contentHeight;
 
-        let page = 1;
+        // Add subsequent pages if content overflows
         while (heightLeft > 0) {
-          page++;
-          position = heightLeft - newImgHeight;
+          position -= contentHeight;
           pdf.addPage();
-          pdf.addImage(imgData, 'PNG', 0, position, newImgWidth, newImgHeight);
-          heightLeft -= pdfHeight;
+          pdf.addImage(imgData, 'PNG', leftMargin, position + topMargin, newImgWidth, newImgHeight);
+          heightLeft -= contentHeight;
         }
 
         const a = document.createElement('a');
