@@ -64,25 +64,6 @@ export default function Home() {
           div.WordSection1 {
             page: WordSection1;
           }
-          body {
-            font-family: Arial, sans-serif;
-            font-size: 12pt;
-            line-height: 1.5;
-          }
-          p {
-            text-align: justify;
-            margin: 0;
-          }
-          h1 {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14pt;
-          }
-          h2 {
-            text-align: left;
-            font-weight: bold;
-            font-size: 12pt;
-          }
         `;
 
         const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -101,8 +82,7 @@ export default function Home() {
           type: 'application/msword'
         });
         
-        const razaoSocial = form.getValues('razaoSocial');
-        const fileName = razaoSocial ? `contrato-${razaoSocial.replace(/[^a-zA-Z0-9]/g, '-')}.doc` : 'contrato-digitalmk.doc';
+        const fileName = 'digital MK.doc';
         saveAs(blob, fileName);
 
       } catch (error) {
@@ -242,5 +222,3 @@ export default function Home() {
     </main>
   );
 }
-
-    
