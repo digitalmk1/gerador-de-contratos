@@ -73,28 +73,27 @@ export default function Home() {
         const rightMargin = 20;
 
         const contentWidth = pageWidth - leftMargin - rightMargin;
-        const contentHeight = pageHeight - topMargin - bottomMargin;
+        const usablePageHeight = pageHeight - topMargin - bottomMargin;
 
         const imgWidth = canvas.width;
         const imgHeight = canvas.height;
         const ratio = imgWidth / imgHeight;
         
-        const newImgWidth = contentWidth;
-        const newImgHeight = newImgWidth / ratio;
+        const pdfImgWidth = contentWidth;
+        const pdfImgHeight = pdfImgWidth / ratio;
         
-        let heightLeft = newImgHeight;
-        let position = 0;
+        let heightLeft = pdfImgHeight;
+        let position = -topMargin; // Start position for the image on the Y axis for subsequent pages
 
         // Add first page
-        pdf.addImage(imgData, 'PNG', leftMargin, topMargin, newImgWidth, newImgHeight);
-        heightLeft -= contentHeight;
+        pdf.addImage(imgData, 'PNG', leftMargin, topMargin, pdfImgWidth, pdfImgHeight);
+        heightLeft -= usablePageHeight;
 
         // Add subsequent pages if content overflows
         while (heightLeft > 0) {
-          position -= contentHeight;
           pdf.addPage();
-          pdf.addImage(imgData, 'PNG', leftMargin, position + topMargin, newImgWidth, newImgHeight);
-          heightLeft -= contentHeight;
+          pdf.addImage(imgData, 'PNG', leftMargin, position, pdfImgWidth, pdfImgHeight);
+          heightLeft -= usablePageHeight;
         }
 
         const a = document.createElement('a');
