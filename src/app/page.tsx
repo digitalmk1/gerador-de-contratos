@@ -56,7 +56,7 @@ export default function Home() {
         const styles = `
           @page WordSection1 {
             size: 595.3pt 841.9pt; /* A4 */
-            margin: 3cm 2cm 2cm 3cm; /* ABNT: Superior 3, Direita 2, Inferior 2, Esquerda 3 */
+            margin: 3cm 2cm 2cm 3cm; /* ABNT: Superior 3cm, Direita 2cm, Inferior 2cm, Esquerda 3cm */
             mso-header-margin: .5in;
             mso-footer-margin: .5in;
             mso-paper-source: 0;
@@ -71,14 +71,17 @@ export default function Home() {
           }
           p {
             text-align: justify;
+            margin: 0;
           }
           h1 {
             text-align: center;
-             font-weight: bold;
+            font-weight: bold;
+            font-size: 14pt;
           }
           h2 {
             text-align: left;
             font-weight: bold;
+            font-size: 12pt;
           }
         `;
 
@@ -239,3 +242,5 @@ export default function Home() {
     </main>
   );
 }
+
+    
