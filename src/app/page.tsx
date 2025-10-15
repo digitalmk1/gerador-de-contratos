@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { FileText, Loader2 } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { saveAs } from 'file-saver';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -43,7 +42,7 @@ export default function Home() {
 
   const watchedData = form.watch();
 
-  const generatePdf = async () => {
+  const generateDocx = async () => {
     if (!form.formState.isValid) {
       form.trigger();
       return;
@@ -54,57 +53,18 @@ export default function Home() {
 
     if (contractElement) {
       try {
-        const canvas = await html2canvas(contractElement, {
-          scale: 2, // Higher scale for better quality
-          useCORS: true,
-          logging: false,
+        const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Contrato</title></head><body>";
+        const footer = "</body></html>";
+        const sourceHTML = header + contractElement.innerHTML + footer;
+        
+        const blob = new Blob([sourceHTML], {
+          type: 'application/msword'
         });
-        
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        
-        // ABNT margins in mm
-        const topMargin = 30;
-        const bottomMargin = 20;
-        const leftMargin = 30;
-        const rightMargin = 20;
 
-        const contentWidth = pageWidth - leftMargin - rightMargin;
-        const usablePageHeight = pageHeight - topMargin - bottomMargin;
-
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = imgWidth / imgHeight;
-        
-        const pdfImgWidth = contentWidth;
-        const pdfImgHeight = pdfImgWidth / ratio;
-        
-        let heightLeft = pdfImgHeight;
-        let position = -topMargin; // Start position for the image on the Y axis for subsequent pages
-
-        // Add first page
-        pdf.addImage(imgData, 'PNG', leftMargin, topMargin, pdfImgWidth, pdfImgHeight);
-        heightLeft -= usablePageHeight;
-
-        // Add subsequent pages if content overflows
-        while (heightLeft > 0) {
-          pdf.addPage();
-          pdf.addImage(imgData, 'PNG', leftMargin, position, pdfImgWidth, pdfImgHeight);
-          heightLeft -= usablePageHeight;
-        }
-
-        const a = document.createElement('a');
-        a.href = pdf.output('bloburl');
-        a.download = 'contrato-digitalmk.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        saveAs(blob, 'contrato-digitalmk.docx');
 
       } catch (error) {
-        console.error("Failed to generate PDF:", error);
+        console.error("Failed to generate DOCX:", error);
       } finally {
         setIsGenerating(false);
       }
@@ -226,15 +186,15 @@ export default function Home() {
         </section>
 
         <footer className="text-center py-8">
-          <Button onClick={generatePdf} disabled={isGenerating} size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold">
+          <Button onClick={generateDocx} disabled={isGenerating} size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold">
             {isGenerating ? (
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             ) : (
               <FileText className="mr-2 h-5 w-5" />
             )}
-            {isGenerating ? 'Gerando PDF...' : 'Gerar e Baixar PDF'}
+            {isGenerating ? 'Gerando Documento...' : 'Gerar e Baixar DOCX'}
           </Button>
-          {!form.formState.isValid && form.formState.isSubmitted && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o PDF.</p>}
+          {!form.formState.isValid && form.formState.isSubmitted && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o documento.</p>}
         </footer>
       </div>
     </main>
