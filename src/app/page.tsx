@@ -57,11 +57,11 @@ export default function Home() {
         const footer = "</body></html>";
         const sourceHTML = header + contractElement.innerHTML + footer;
         
-        const blob = new Blob([sourceHTML], {
+        const blob = new Blob(['\ufeff', sourceHTML], {
           type: 'application/msword'
         });
 
-        saveAs(blob, 'contrato-digitalmk.docx');
+        saveAs(blob, 'contrato-digitalmk.doc');
 
       } catch (error) {
         console.error("Failed to generate DOCX:", error);
