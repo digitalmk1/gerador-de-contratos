@@ -65,7 +65,7 @@ const Contract = ({ data }: ContractProps) => {
 
 
   return (
-    <div id="contract-preview" className="bg-white text-black p-8 md:p-12">
+    <div id="contract-preview" className="bg-white text-black p-6 sm:p-8 md:p-12">
       <h1 style={headerStyle}>Contrato de Licença de Uso de Software (ERP)</h1>
       
       <p style={paragraphWithMargin}>
@@ -101,7 +101,7 @@ const Contract = ({ data }: ContractProps) => {
         <p style={{...paragraphWithMargin, marginTop: '1rem'}}><strong>Parágrafo único:</strong> As partes acordam que a relação comercial de compra e venda se restringe somente entre o A CONTRATADA e o CONTRATANTE, isentando a HIPER de qualquer responsabilidade consumerista, bem como de prestação de serviço de suporte a CONTRATANTE.</p>
         <p style={paragraphWithMargin}>2.1.2. O presente Contrato tem por objeto a licença para utilização software conforme Proposta comercial enviada ao CONTRATANTE com preços condições de pagamento detalhamento do produto contratado e implantação que faz parte do presente termo de uso.</p>
         <p style={paragraphWithMargin}>Em caso de contradição entre a proposta comercial e o presente contrato prevalece as disposições da proposta comercial.</p>
-        <p style={paragraphWithMargin}>2.1.3 A CONTRATADA não garante que o Sistema HIPER atenderão todas as necessidades e especificidades demandadas pelo (a) CONTRATANTE; a ausência de determinada qualificação no HIPER não obrigará a CONTRATADA e/ou HIPER a customizá-los.</p>
+        <p style={paragraphWithMargin}>2.1.3 A CONTRATADA não garante que o Sistema HIPER atenderão todas as necessidades e especificidades demandadas pelo (a) CONTRATANTE; a ausência de determinada qualificação no HIPER não obrigará a CONTRATada e/ou HIPER a customizá-los.</p>
         <p style={paragraphWithMargin}>2.1.4 O HIPER poderá vir a ter novas versões, resultantes de modificações em suas atuais características, por razões técnicas de compatibilização com a evolução de seus recursos e plataformas de geração e operação, e principalmente, objetivando as suas próprias evoluções.</p>
         <p style={paragraphWithMargin}>2.1.5 O HIPER será fornecido por meio eletrônico, sem mídias, para garantir que o (a) CONTRATANTE tenham sempre as competentes versões mais atualizadas.</p>
         <p style={paragraphWithMargin}>2.1.6 Não estão incluídos no presente contrato o fornecimento de softwares e a prestação de serviços que não estejam especificados neste Instrumento ou proposta comercial; porém poderão ser detalhados em proposição comercial separada, que poderá ser objeto de aditivo contratual ou contratação própria, autônoma e específica.</p>
@@ -137,7 +137,7 @@ const Contract = ({ data }: ContractProps) => {
         <p style={paragraphWithMargin}>4.4. A CONTRATANTE Autoriza para os devidos fins a CONTRATADA realizar remotamente operações dentro de seus computadores para melhor utilização do software.</p>
         <p style={paragraphWithMargin}>O cliente está totalmente ciente sobre o funcionamento desta operação, reconhecendo que o mesmo não representa qualquer perigo à integridade de seus equipamentos e/ou softwares, assim como reconhece a competência técnica e idoneidade da e de seus colaboradores para efetuar tal procedimento.</p>
         <p style={paragraphWithMargin}>4.5. O Treinamento poderá ser feito presencial pela CONTRATADA desde que conste na proposta comercial conforme item 1.1.9 deste contrato.</p>
-        <p style={paragraphWithMargin}>4.6. Em caso de necessidade de Suporte além do padrão, este deverá ser solicitado pelo (a) CONTRATANTE, que deverá aprovar o preço adicional para consecução dos competentes serviços</p>
+        <p style={paragraphWithMargin}>4.6. Em caso de necessidade de Suporte além do padrão, este deverá ser solicitado pelo (a) CONTRATANTE, que deverá aprovar o preço adicional para consecução dos competentes services</p>
         <p style={paragraphWithMargin}>4.7. Os serviços de Customização poderão ser contratados, mediante o pagamento de preço adicional, pelos mesmos meios de comunicação do serviço de Suporte, podendo, porém, a CONTRATADA, a seu exclusivo critério, exigir a formalização da prestação de serviço em instrumento jurídico apropriado.</p>
       </Clause>
 

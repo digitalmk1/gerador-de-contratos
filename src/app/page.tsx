@@ -66,6 +66,15 @@ export default function Home() {
           div.WordSection1 {
             page: WordSection1;
           }
+          body {
+            font-family: "Times New Roman", Times, serif;
+          }
+          p {
+            font-size: 12pt;
+            line-height: 1.5;
+            text-align: justify;
+            margin-bottom: 1rem;
+          }
         `;
 
         const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -85,7 +94,7 @@ export default function Home() {
         });
         
         const razaoSocial = form.getValues('razaoSocial');
-        const fileName = razaoSocial ? `${razaoSocial}.doc` : 'digital MK.doc';
+        const fileName = razaoSocial ? `Contrato - ${razaoSocial}.doc` : 'Contrato Digital MK.doc';
         saveAs(blob, fileName);
 
       } catch (error) {
@@ -101,138 +110,143 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-background p-4 sm:p-6 md:p-8">
-      <div className="max-w-5xl mx-auto space-y-8">
-        <header className="text-center py-8">
-          <h1 className="text-4xl font-headline font-bold text-primary sm:text-5xl">CONTRATO DIGITAL MK</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Gere seu contrato de licença de uso de software com facilidade.</p>
+    <main className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
+      <div className="max-w-6xl mx-auto space-y-8">
+        <header className="text-center py-6 sm:py-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary">CONTRATO DIGITAL MK</h1>
+          <p className="text-muted-foreground mt-2 text-base sm:text-lg">Gere seu contrato de licença de uso de software com facilidade.</p>
         </header>
 
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-2xl">Dados do Contratante</CardTitle>
-            <CardDescription>Preencha as informações abaixo para gerar o contrato.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Form {...form}>
-              <form className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="razaoSocial"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Razão Social / Nome Completo</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Ex: João da Silva ME" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                 <FormField
-                  control={form.control}
-                  name="cnpjCpf"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>CNPJ / CPF</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="Ex: 12.345.678/0001-90" 
-                          {...field}
-                          onChange={(e) => {
-                            field.onChange(formatCnpjCpf(e.target.value));
-                          }}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="endereco"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Endereço</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: Rua das Flores, 123" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="cidade"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Cidade</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: São Paulo" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <FormField
-                    control={form.control}
-                    name="uf"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Estado (UF)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: SP" maxLength={2} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="cep"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>CEP</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="Ex: 01001-000" 
-                            {...field}
-                            onChange={(e) => {
-                              field.onChange(formatCEP(e.target.value));
-                            }}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                 </div>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
-
-        <section className="space-y-4">
-          <h2 className="text-3xl font-headline font-semibold text-center">Pré-visualização do Contrato</h2>
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <Contract data={watchedData} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="flex flex-col space-y-8">
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-xl sm:text-2xl">Dados do Contratante</CardTitle>
+                <CardDescription>Preencha as informações abaixo para gerar o contrato.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="razaoSocial"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Razão Social / Nome Completo</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ex: João da Silva ME" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                     <FormField
+                      control={form.control}
+                      name="cnpjCpf"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>CNPJ / CPF</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Ex: 12.345.678/0001-90" 
+                              {...field}
+                              onChange={(e) => {
+                                field.onChange(formatCnpjCpf(e.target.value));
+                              }}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="endereco"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Endereço</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Ex: Rua das Flores, 123" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="cidade"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Cidade</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Ex: São Paulo" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                       <FormField
+                        control={form.control}
+                        name="uf"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Estado (UF)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Ex: SP" maxLength={2} {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="cep"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>CEP</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="Ex: 01001-000" 
+                                {...field}
+                                onChange={(e) => {
+                                  field.onChange(formatCEP(e.target.value));
+                                }}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                     </div>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+             <footer className="text-center py-4">
+              <Button onClick={generateDocx} disabled={isGenerating} size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold w-full sm:w-auto">
+                {isGenerating ? (
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                ) : (
+                  <FileText className="mr-2 h-5 w-5" />
+                )}
+                {isGenerating ? 'Gerando Documento...' : 'Gerar e Baixar DOCX'}
+              </Button>
+              {form.formState.isSubmitted && !form.formState.isValid && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o documento.</p>}
+            </footer>
           </div>
-        </section>
 
-        <footer className="text-center py-8">
-          <Button onClick={generateDocx} disabled={isGenerating} size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold">
-            {isGenerating ? (
-              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            ) : (
-              <FileText className="mr-2 h-5 w-5" />
-            )}
-            {isGenerating ? 'Gerando Documento...' : 'Gerar e Baixar DOCX'}
-          </Button>
-          {form.formState.isSubmitted && !form.formState.isValid && <p className="text-sm text-destructive mt-2">Por favor, preencha todos os campos corretamente para gerar o documento.</p>}
-        </footer>
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-headline font-semibold text-center">Pré-visualização do Contrato</h2>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="h-[70vh] overflow-y-auto">
+                <Contract data={watchedData} />
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
   );
