@@ -60,8 +60,10 @@ export default function Home() {
         const blob = new Blob(['\ufeff', sourceHTML], {
           type: 'application/msword'
         });
-
-        saveAs(blob, 'contrato-digitalmk.doc');
+        
+        const razaoSocial = form.getValues('razaoSocial');
+        const fileName = razaoSocial ? `contrato-${razaoSocial}.doc` : 'contrato-digitalmk.doc';
+        saveAs(blob, fileName);
 
       } catch (error) {
         console.error("Failed to generate DOCX:", error);
