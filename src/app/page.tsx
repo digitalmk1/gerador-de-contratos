@@ -56,7 +56,7 @@ export default function Home() {
         const styles = `
           @page WordSection1 {
             size: 595.3pt 841.9pt; /* A4 */
-            margin: 3cm 2cm 3cm 2cm;
+            margin: 3cm 2cm 2cm 3cm; /* ABNT: Superior 3, Direita 2, Inferior 2, Esquerda 3 */
             mso-header-margin: .5in;
             mso-footer-margin: .5in;
             mso-paper-source: 0;
@@ -69,11 +69,16 @@ export default function Home() {
             font-size: 12pt;
             line-height: 1.5;
           }
-          p, h1, h2 {
+          p {
             text-align: justify;
           }
-          h1, h2 {
+          h1 {
+            text-align: center;
              font-weight: bold;
+          }
+          h2 {
+            text-align: left;
+            font-weight: bold;
           }
         `;
 
@@ -94,7 +99,7 @@ export default function Home() {
         });
         
         const razaoSocial = form.getValues('razaoSocial');
-        const fileName = razaoSocial ? `contrato-${razaoSocial}.doc` : 'contrato-digitalmk.doc';
+        const fileName = razaoSocial ? `contrato-${razaoSocial.replace(/[^a-zA-Z0-9]/g, '-')}.doc` : 'contrato-digitalmk.doc';
         saveAs(blob, fileName);
 
       } catch (error) {

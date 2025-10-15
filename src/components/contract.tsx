@@ -7,9 +7,9 @@ type ContractProps = {
 };
 
 const Clause = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="mt-6 text-justify">
-    <h2 className="font-bold text-base mb-2 uppercase">{title}</h2>
-    {children}
+  <section className="mt-6">
+    <h2 className="font-bold text-base mb-2 uppercase text-left">{title}</h2>
+    <div className="text-justify">{children}</div>
   </section>
 );
 
@@ -26,7 +26,7 @@ const Contract = ({ data }: ContractProps) => {
   const filledValueClass = "text-primary font-semibold";
 
   return (
-    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12 text-justify" style={{fontFamily: 'Arial, sans-serif', fontSize: '12pt', lineHeight: '1.5'}}>
+    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12" style={{fontFamily: 'Arial, sans-serif', fontSize: '12pt', lineHeight: '1.5'}}>
       <h1 className="text-center !font-bold !text-xl !mb-10 uppercase">Contrato de Licença de Uso de Software (ERP)</h1>
       
       <p className="text-justify">
