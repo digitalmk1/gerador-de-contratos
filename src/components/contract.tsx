@@ -6,12 +6,24 @@ type ContractProps = {
   data: Partial<ContractFormData>;
 };
 
-const Clause = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="mt-6">
-    <h2 style={{ fontFamily: 'Times New Roman, serif', fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase' }} className="text-left mb-2">{title}</h2>
-    <div className="text-justify">{children}</div>
-  </section>
-);
+const Clause = ({ title, children }: { title: string; children: React.ReactNode }) => {
+  const titleStyle: React.CSSProperties = {
+    fontFamily: 'Times New Roman, serif',
+    fontSize: '12pt',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textAlign: 'left',
+    marginTop: '1.5rem',
+    marginBottom: '0.5rem',
+  };
+
+  return (
+    <section>
+      <h2 style={titleStyle}>{title}</h2>
+      <div>{children}</div>
+    </section>
+  );
+};
 
 const Contract = ({ data }: ContractProps) => {
   const {
@@ -23,26 +35,40 @@ const Contract = ({ data }: ContractProps) => {
     cep = '[CEP]',
   } = data;
 
-  const filledValueClass = "text-primary font-semibold";
+  const filledValueStyle: React.CSSProperties = {
+    color: 'hsl(var(--primary))',
+    fontWeight: '600',
+  };
 
   const textStyle: React.CSSProperties = {
     fontFamily: 'Times New Roman, serif',
     fontSize: '12pt',
     lineHeight: '1.5',
     textAlign: 'justify',
+    margin: '0',
+  };
+  
+  const headerStyle: React.CSSProperties = {
+    fontFamily: 'Times New Roman, serif',
+    fontSize: '14pt',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    marginBottom: '2.5rem',
   };
 
+
   return (
-    <div id="contract-preview" className="prose prose-slate max-w-none p-8 md:p-12">
-      <h1 style={{ fontFamily: 'Times New Roman, serif', fontSize: '14pt', fontWeight: 'bold', textTransform: 'uppercase' }} className="text-center !mb-10">Contrato de Licença de Uso de Software (ERP)</h1>
+    <div id="contract-preview" className="bg-white text-black p-8 md:p-12">
+      <h1 style={headerStyle}>Contrato de Licença de Uso de Software (ERP)</h1>
       
       <p style={textStyle}>
-        <strong>Razão Social:</strong> <span className={filledValueClass}>{razaoSocial}</span> - pessoa física ou jurídica de direito privado, regularmente inscrita no CNPJ/CPF sob o número: <span className={filledValueClass}>{cnpjCpf}</span> com endereço: <span className={filledValueClass}>{endereco}</span> Cidade: <span className={filledValueClass}>{cidade}</span> Estado: <span className={filledValueClass}>{uf}</span>, CEP: <span className={filledValueClass}>{cep}</span>, doravante denominado(a) CONTRATANTE; e MARCIO SILVA DE OLIVEIRA ME, pessoa jurídica de direito privado com sede na Rua Pedro Gomes de Carvalho, Nº 758, Oficinas, Tubarão /SC, inscrita no CNPJ sob o n.º 14473125/0001-43, doravante denominada CONTRATADA. Em conjunto, CONTRATANTE e CONTRATADA denominadas “Partes” e, isoladamente, “Parte”, conferem forma regular e estável ao presente CONTRATO EMPRESARIAL (USO SISTEMA HIPER) (“Contrato”), mediante as seguintes cláusulas e condições.
+        <strong>Razão Social:</strong> <span style={filledValueStyle}>{razaoSocial}</span> - pessoa física ou jurídica de direito privado, regularmente inscrita no CNPJ/CPF sob o número: <span style={filledValueStyle}>{cnpjCpf}</span> com endereço: <span style={filledValueStyle}>{endereco}</span> Cidade: <span style={filledValueStyle}>{cidade}</span> Estado: <span style={filledValueStyle}>{uf}</span>, CEP: <span style={filledValueStyle}>{cep}</span>, doravante denominado(a) CONTRATANTE; e MARCIO SILVA DE OLIVEIRA ME, pessoa jurídica de direito privado com sede na Rua Pedro Gomes de Carvalho, Nº 758, Oficinas, Tubarão /SC, inscrita no CNPJ sob o n.º 14473125/0001-43, doravante denominada CONTRATADA. Em conjunto, CONTRATANTE e CONTRATADA denominadas “Partes” e, isoladamente, “Parte”, conferem forma regular e estável ao presente CONTRATO EMPRESARIAL (USO SISTEMA HIPER) (“Contrato”), mediante as seguintes cláusulas e condições.
       </p>
 
       <Clause title="CLÁUSULA PRIMEIRA – DEFINIÇÕES">
         <p style={textStyle}>1.1. Para os efeitos deste instrumento os vocábulos e expressões abaixo têm as seguintes definições:</p>
-        <div className="space-y-2">
+        <div style={{...textStyle, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <p style={textStyle}><strong>1.1.1. Multiusuário:</strong> termo que define um sistema operacional que permite acesso simultâneo de múltiplos usuários;</p>
             <p style={textStyle}><strong>1.1.2. HIPER:</strong> Sistema Integrado de Gestão Empresarial (“Enterprise Resource Planning”), software multiusuário de planejamento de recursos empresariais online e ou Desktop, que possui módulos de gerenciamento de processos relacionados a finanças (gestão financeira, gestão de compras e relatórios), controle de vendas e serviços (gestão de vendas, gestão fiscal (PDV com cupom NFCe e CFe SAT), de propriedade da empresa ( HIPER SOFTWARE CNPJ 12.605.982/0001-24) detentora dos direitos autorais do código fonte do sistema , não desenvolvidos por encomenda do(a) CONTRATADA , representando sistema genérico de uso não exclusivo;</p>
             <p style={textStyle}><strong>1.1.3. HIPER:</strong> software destinado à comercialização, na forma de revenda, de Sistemas.</p>
@@ -142,3 +168,5 @@ const Contract = ({ data }: ContractProps) => {
 };
 
 export default Contract;
+
+    
